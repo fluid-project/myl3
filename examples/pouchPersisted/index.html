@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../../src/lib/infusion/infusion-all.js"></script>
+        <script src="../../src/lib/pouchdb/dist/pouchdb.js"></script>
+        <script src="../../src/lib/gpii-pouchdb/src/js/pouchdb-common.js"></script>
+        <script src="../../src/lib/jsonlint/web/jsonlint.js"></script>
+
+        <!-- browserify deps -->
+        <script src="../../src/lib/browserify/http.js"></script>
+        <script src="../../src/lib/browserify/https.js"></script>
+        <script src="../../src/lib/browserify/urlModule.js"></script>
+
+        <!-- kettle datasource -->
+        <script src="../../src/lib/kettle/dataSource-core.js"></script>
+        <script src="../../src/lib/kettle/dataSource-url.js"></script>
+
+        <script src="../../src/js/eventInTimeAware.js"></script>
+
+        <script src="../../src/js/dataSourcePouchDB-gpii.js"></script>
+        <script src="../../src/js/pouchPersisted.js"></script>
+
+        <script src="src/js/pouchPersistedInlineEdit.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../src/lib/infusion/src/components/inlineEdit/css/InlineEdit.css" />
+        <link rel="stylesheet" type="text/css" href="../../src/lib/infusion/src/framework/core/css/fluid.css" />
+    </head>
+
+    <body>
+        <h1>pouchPersisted Grade Example</h1>
+        <p>
+            A simple example of an inlineEdit component that persists its <code>model.value</code> to PouchDB.
+        </p>
+        <p>
+            Instructions:
+            <ul>
+                <li>
+                    Edit the text.
+                </li>
+                <li>
+                    Reload the page; you'll see your text has persisted.
+                </li>
+                <li>
+                    The log will also update.
+                </li>
+            </ul>
+        </p>
+        <h2>Edit Here</h2>
+        <div class="floec-persistedInlineEdit">
+            <div class="flc-inlineEdit-text">
+
+            </div>
+            <div>
+                <a href="#" class="floec-persistedInlineEdit-delete">Delete Persisted Model</a>
+            </div>
+            <h3>Persistence Log</h3>
+            <ul class="floec-persistedInlineEdit-loggingArea">
+
+            </ul>
+        </div>
+    <script>
+
+        pouchDB = gpii.pouch({dbOptions: {
+            name: "examples"
+        }});
+
+        floe.dashboard.pouchPersistedInlineEdit(".floec-persistedInlineEdit");
+    </script>
+
+    </body>
+</html>
